@@ -1,12 +1,19 @@
+typedef struct {
+	struct Order* Onext;
+	int order_number;
+    int qty;
+}Order;
 
+typedef struct Order order;
+typedef struct Order* OPtr;
 
 typedef struct {
-	 NodePtr headPtr,tailPtr;
-	int size;
+	OPtr headOPtr,tailOPtr;
+	int Osize;
 }Queue;
 
 
-void enqueue_struct(Queue* q, int x){
+void enqueue_order(Queue* q, int x, int y){
   Node *new_node=(Node*) malloc(sizeof(Node));
 if(new_node){ 
   new_node->data=x;
@@ -20,7 +27,7 @@ if(new_node){
 }
 
 
-int dequeue_struct(Queue *q){
+int dequeue_order(Queue *q){
    NodePtr t=q->headPtr;
    if(t){
    int value= t->data;
@@ -31,7 +38,6 @@ int dequeue_struct(Queue *q){
        /*Finish dequeue */
    return value;
    }
-   printf("Empty queue\n");
+   printf("Empty queue");
    return 0;
 }
-
